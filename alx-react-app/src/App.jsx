@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import WelcomeMessage from './components/WelcomeMessage'
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -16,6 +17,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      {/* Including the WelcomeMessage component */}
+      <WelcomeMessage />
       <h1>"Hello everyone, I am learning React at ALX!"</h1>
       <p>"I am learning about JSX!"</p>
     </>
