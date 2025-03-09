@@ -4,11 +4,12 @@ import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
 import DeleteRecipeButton from './components/DeleteRecipeButton'; 
 import { useRecipeStore } from './store/recipeStore';
-
+import RecipeList from './components/RecipeList';
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<RecipeList />} />
         <Route path="/" element={<Home />} />
         <Route path="/recipe/:id" element={<RecipeDetails />} />
         <Route path="/edit-recipe/:id" element={<EditRecipeForm />} />
