@@ -13,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recipe/:id" element={<RecipeDetails />} />
         <Route path="/edit-recipe/:id" element={<EditRecipeForm />} />
+        <Route path="/delete-recipe/:id" element={<AddRecipeForm />} />
       </Routes>
     </Router>
   );
