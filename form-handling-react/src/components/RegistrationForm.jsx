@@ -24,21 +24,21 @@ const RegistrationForm = () => {
             <input 
                 type="text" 
                 name="username" 
-                value="{username}" 
+                value={formData.username}  // ✅ Corrected
                 onChange={handleChange} 
                 placeholder="Username" 
             />
             <input 
                 type="email" 
                 name="email" 
-                value="{email}" 
+                value={formData.email}  // ✅ Corrected
                 onChange={handleChange} 
                 placeholder="Email" 
             />
             <input 
                 type="password" 
                 name="password" 
-                value="{password}"
+                value={formData.password}  // ✅ Corrected
                 onChange={handleChange} 
                 placeholder="Password" 
             />
