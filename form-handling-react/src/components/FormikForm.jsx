@@ -10,13 +10,11 @@ const validationSchema = Yup.object({
 const FormikForm = () => {
     return (
         <Formik
-            initialValues={{ username: "", email: "", password: "" }}
-            validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting }) => {
-                console.log("Form Submitted:", values);
-                setSubmitting(false);
-            }}
-        >
+        initialValues={{ username: "", email: "", password: "" }}
+        validationSchema={validationSchema}
+        onSubmit={(values) => console.log(values)}
+    >
+    
             {({ isSubmitting }) => (
                 <Form>
                     <div>
