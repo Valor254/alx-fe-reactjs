@@ -17,17 +17,14 @@
     "eject": "react-scripts eject"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
     "moduleNameMapper": {
-  "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-  "\\.(svg|jpg|jpeg|png|gif)$": "<rootDir>/__mocks__/fileMock.js",
-  "testEnvironment": "jsdom"
-
-}
-
-    
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "\\.(svg|jpg|jpeg|png|gif)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -51,8 +48,9 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^16.2.0",
+    "babel-jest": "^27.5.1",
     "jest": "^27.5.1",
-    "babel-jest": "^27.5.1"
+    "jest-environment-jsdom": "^29.7.0"
   }
 }
