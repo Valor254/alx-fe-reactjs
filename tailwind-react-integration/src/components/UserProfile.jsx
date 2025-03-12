@@ -1,18 +1,18 @@
-function UserProfile() {
+const UserProfile = () => {
     return (
-      <div className="bg-gray-100 p-8 max-w-sm mx-auto my-20 rounded-lg shadow-lg text-center">
+      <div className="p-6 sm:p-5 md:p-7 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto bg-white shadow-lg rounded-lg text-center">
         <img
           src="https://via.placeholder.com/150"
-          alt="User"
-          className="rounded-full w-36 h-36 mx-auto"
+          alt="Profile"
+          className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 mx-auto rounded-full"
         />
-        <h1 className="text-xl text-blue-800 my-4">John Doe</h1>
-        <p className="text-gray-600 text-base">
-          Developer at Example Co. Loves to write code and explore new technologies.
+        <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mt-4">John Doe</h2>
+        <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-2">
+          Frontend Developer & UI/UX Enthusiast
         </p>
       </div>
     );
-  }
+  };
   
   export default UserProfile;
   
