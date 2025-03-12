@@ -1,15 +1,19 @@
-import React from "react";
+import React from 'react';
 
 const UserProfile = () => {
   return (
-    <div className="bg-white shadow-md rounded-lg sm:p-4 md:p-8 max-w-xs md:max-w-sm mx-auto text-center">
+    <div className="p-4 md:p-8 max-w-xs md:max-w-sm bg-white shadow-md hover:shadow-xl rounded-lg transition-shadow duration-300 ease-in-out">
       <img
-        src="https://via.placeholder.com/150"
+        src="/path-to-profile.jpg"
         alt="User Profile"
-        className="rounded-full w-24 h-24 sm:w-24 sm:h-24 md:w-36 md:h-36 mx-auto"
+        className="w-24 h-24 md:w-36 md:h-36 rounded-full mx-auto hover:scale-110 transition-transform duration-300 ease-in-out"
       />
-      <h2 className="text-lg sm:text-lg md:text-xl font-semibold mt-4">John Doe</h2>
-      <p className="text-sm sm:text-sm md:text-base text-gray-600">Software Engineer | Tech Enthusiast</p>
+      <h2 className="text-lg md:text-xl font-semibold text-gray-800 mt-4 text-center hover:text-blue-500 transition-colors duration-300 ease-in-out">
+        John Doe
+      </h2>
+      <p className="text-sm md:text-base text-gray-600 text-center mt-2">
+        Frontend Developer at TechCorp
+      </p>
     </div>
   );
 };
