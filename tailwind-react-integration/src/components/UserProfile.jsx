@@ -1,21 +1,24 @@
-import React from 'react';
-
-const UserProfile = () => {
+function UserProfile() {
   return (
-    <div className="p-4 md:p-8 max-w-xs md:max-w-sm bg-white shadow-md hover:shadow-xl rounded-lg transition-shadow duration-300 ease-in-out">
-      <img
-        src="/path-to-profile.jpg"
-        alt="User Profile"
-        className="w-24 h-24 md:w-36 md:h-36 rounded-full mx-auto hover:scale-110 transition-transform duration-300 ease-in-out"
+    <div className="bg-gray-100 p-8 max-w-sm mx-auto my-20 rounded-lg shadow-lg text-center">
+      {/* Profile Image */}
+      <img 
+        src="https://via.placeholder.com/150" 
+        alt="User" 
+        className="w-36 h-36 rounded-full mx-auto"
       />
-      <h2 className="text-lg md:text-xl font-semibold text-gray-800 mt-4 text-center hover:text-blue-500 transition-colors duration-300 ease-in-out">
+      
+      {/* Name */}
+      <h1 className="text-xl text-blue-800 my-4">
         John Doe
-      </h2>
-      <p className="text-sm md:text-base text-gray-600 text-center mt-2">
-        Frontend Developer at TechCorp
+      </h1>
+      
+      {/* Bio */}
+      <p className="text-base text-gray-600">
+        Developer at Example Co. Loves to write code and explore new technologies.
       </p>
     </div>
   );
-};
+}
 
 export default UserProfile;
