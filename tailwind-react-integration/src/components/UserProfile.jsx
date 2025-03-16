@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserProfile = () => {
   return (
-    <div className="bg-gray-100 my-20 shadow-lg p-4 sm:p-4 md:p-8 max-w-xs sm:max-w-sm mx-auto rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-xl">
+    <div className="bg-gray-100 my-20 shadow-lg p-4 sm:p-4 md:p-8 max-w-xs md:max-w-sm mx-auto rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-xl">
       <img 
         src="https://via.placeholder.com/150" 
         alt="User" 
