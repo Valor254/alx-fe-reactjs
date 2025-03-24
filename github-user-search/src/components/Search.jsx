@@ -3,6 +3,7 @@ import axios from "axios";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [location, setLocation] = useState("");
   const [searchResults, setSearchResults] = useState([]); // Ensuring it's always an array
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
