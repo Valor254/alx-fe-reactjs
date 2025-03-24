@@ -1,62 +1,75 @@
-import React, { useState } from "react";
-import { fetchUserData, fetchUserRepos } from "../services/githubService";
-import UserProfile from "./UserProfile";
-import UserRepos from "./UserRepos";
+import { useState } from "react";
+import axios from "axios";
 
 const Search = () => {
-  const [username, setUsername] = useState("");
-  const [user, setUser] = useState(null);
-  const [repos, setRepos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]); // Ensuring it's always an array
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (!username) return;
+  const fetchUserData = async () => {
+    if (!searchTerm.trim()) return; // Prevent empty search
 
     setLoading(true);
-    setError("");
-    setUser(null);
-    setRepos([]);
+    setError(null);
 
     try {
-      const userData = await fetchUserData(username);
-      if (!userData) {
-        setError("Looks like we can't find the user");
-      } else {
-        setUser(userData);
-        const userRepos = await fetchUserRepos(username);
-        setRepos(userRepos);
-      }
-    } catch (err) {
-      setError("An error occurred. Please try again.");
+      const response = await axios.get(`https://api.github.com/search/users?q=${searchTerm}`);
+      setSearchResults(response.data.items || []); // Ensuring an array is always set
+    } catch (error) {
+      setError("Looks like we can't find the user");
+      setSearchResults([]); // Reset results on error
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
-      <form onSubmit={handleSearch} className="flex space-x-2">
+    <div className="max-w-xl mx-auto mt-10 p-4 bg-white shadow-lg rounded-lg">
+      {/* Search Input */}
+      <div className="flex space-x-2">
         <input
           type="text"
           placeholder="Search GitHub username..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className="flex-grow p-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          onClick={fetchUserData}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
         >
           Search
         </button>
-      </form>
+      </div>
 
-      {loading && <p className="mt-4 text-blue-500">Loading...</p>}
-      {error && <p className="mt-4 text-red-500">{error}</p>}
-      {user && <UserProfile user={user} />}
-      {repos.length > 0 && <UserRepos repos={repos} />}
+      {/* Status Messages */}
+      {loading && <p className="text-center mt-4 text-gray-500">Loading...</p>}
+      {error && <p className="text-center mt-4 text-red-500">{error}</p>}
+
+      {/* Search Results */}
+      <div className="mt-4 space-y-4">
+        {searchResults.length > 0 ? (
+          searchResults.map((user) => (
+            <div key={user.id} className="p-4 border rounded-lg flex items-center space-x-4">
+              <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
+              <div>
+                <p className="text-lg font-semibold">{user.login}</p>
+                <a
+                  href={user.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
+                  View Profile
+                </a>
+              </div>
+            </div>
+          ))
+        ) : (
+          !loading && !error && <p className="text-center text-gray-500">No users found</p>
+        )}
+      </div>
     </div>
   );
 };
