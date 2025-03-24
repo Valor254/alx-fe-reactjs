@@ -1,13 +1,23 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com/users/";
+const BASE_URL = "https://api.github.com";
 
 export const fetchUserData = async (username) => {
   try {
-    const response = await axios.get(`${BASE_URL}${username}`);
+    const response = await axios.get(`${BASE_URL}/users/${username}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching user data:", error);
-    return null; // Return null if the user is not found or if an error occurs
+    return null;
+  }
+};
+
+export const fetchUserRepos = async (username) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/users/${username}/repos`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user repositories:", error);
+    return [];
   }
 };
