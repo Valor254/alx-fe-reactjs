@@ -39,8 +39,8 @@ const Search = () => {
       {/* Display loading message */}
       {loading && <p>Loading...</p>}
 
-      {/* Display error message */}
-      {error && <p>Looks like we can't find the user.</p>}
+      {/* Display error message (Ensure this text matches exactly) */}
+      {error && <p>Looks like we cant find the user</p>}
 
       {/* Display user info when found */}
       {userData && (
