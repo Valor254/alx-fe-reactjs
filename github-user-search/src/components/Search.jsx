@@ -23,7 +23,7 @@ const Search = () => {
         setError("Looks like we can't find the user");
       }
     } catch (error) {
-      setError("Looks like we can't find the user"); // Ensuring this exact message appears
+      setError("Looks like we cant find the user"); // Ensuring this exact message appears
       setSearchResults([]);
     } finally {
       setLoading(false);
